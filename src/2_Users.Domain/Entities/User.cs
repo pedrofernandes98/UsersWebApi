@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using Users.Domain.Validators;
 namespace Users.Domain.Entities
 {
     public class User : Base
@@ -41,15 +43,17 @@ namespace Users.Domain.Entities
         public override bool Validate()
         {
             var validator = new UserValidator(); //Entidade de validação
-            var validation = validator.Validade(this); //Retorno da validação
+            var validation = validator.Validate(this); //Retorno da validação
 
             if (!validation.IsValid)
             {
                 foreach (var error in validation.Errors) //Para cada erro identificado na validação 
                     _errors.Add(error.ErrorMessage); //Adiciona na lista de erros
 
-                throw new Exception("Foram encontrados valores inválidos para os campos informados.", _errors);
+                throw new Exception($"Foram encontrados valores inválidos para os campos informados.\n {_errors[0]}");
             }
+
+            return true;
         }
     }
 }

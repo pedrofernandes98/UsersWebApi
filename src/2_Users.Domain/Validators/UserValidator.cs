@@ -1,4 +1,5 @@
 using FluentValidation;
+using Users.Domain.Entities;
 namespace Users.Domain.Validators
 {
     public class UserValidator : AbstractValidator<User>
@@ -30,7 +31,7 @@ namespace Users.Domain.Validators
                 .WithMessage($"O nome não pode ser nulo.");
 
             //MinimunLenght(int: lenght)
-            //MaximunLenght(int: lenght)
+            //MaximumLength(int: lenght)
 
             // - Email
             RuleFor(x => x.Email)
@@ -40,10 +41,10 @@ namespace Users.Domain.Validators
                 .NotNull()
                 .WithMessage($"O e-mail não pode ser nulo.")
 
-                .MinimunLenght(EMAIL_MIN_LENGTH)
+                .MinimumLength(EMAIL_MIN_LENGTH)
                 .WithMessage($"O e-mail deve ter no mínimo {EMAIL_MIN_LENGTH} caracteres.")
 
-                .MaximunLenght(EMAIL_MAX_LENGTH)
+                .MaximumLength(EMAIL_MAX_LENGTH)
                 .WithMessage($"O e-mail deve ter no máximo {EMAIL_MAX_LENGTH} catacteres.")
 
                 .Matches(EMAIL_VALIDATOR_REGEX)
@@ -58,10 +59,10 @@ namespace Users.Domain.Validators
                 .NotNull()
                 .WithMessage($"O nome não pode ser nula.")
 
-                .MinimunLenght(PASSWORD_MIN_LENGTH)
+                .MinimumLength(PASSWORD_MIN_LENGTH)
                 .WithMessage($"A senha deve ter no mínimo {EMAIL_MIN_LENGTH} caracteres.")
 
-                .MaximunLenght(PASSWORD_MAX_LENGTH)
+                .MaximumLength(PASSWORD_MAX_LENGTH)
                 .WithMessage($"A senha deve ter no máximo {EMAIL_MAX_LENGTH} carateres.");
         }
     }
