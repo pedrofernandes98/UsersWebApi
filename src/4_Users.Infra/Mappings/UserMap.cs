@@ -16,6 +16,7 @@ namespace Users.Infra.Mappings
 
             //Columns
             builder.Property(x => x.Id)
+                .HasColumnName("ID")
                 .UseIdentityColumn() //AutoIncrement
                 .HasColumnType("BIGINT");
 
