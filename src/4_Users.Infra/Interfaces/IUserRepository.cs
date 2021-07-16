@@ -1,5 +1,7 @@
 using Users.Domain.Entities;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+
 namespace Users.Infra.Interfaces
 {
     public interface IUserRepository : IBaseRepository<User>

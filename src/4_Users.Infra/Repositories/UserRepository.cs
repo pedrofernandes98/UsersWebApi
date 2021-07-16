@@ -4,6 +4,8 @@ using Users.Infra.Context;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+
 namespace Users.Infra.Repositories
 {
     public class UserRepository : BaseRepository<User>, IUserRepository

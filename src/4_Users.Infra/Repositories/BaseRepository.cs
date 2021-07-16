@@ -4,6 +4,7 @@ using Users.Infra.Context;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace Users.Infra.Repositories
 {
@@ -18,7 +19,7 @@ namespace Users.Infra.Repositories
 
         public virtual async Task<T> Get(long id)
         {
-            var obj = _context.Set<T>()
+            var obj = await _context.Set<T>()
                               .AsNoTracking()
                               .Where(x => x.Id == id)
                               .FirstOrDefaultAsync();
@@ -45,14 +46,14 @@ namespace Users.Infra.Repositories
         {
             //_context.Entry(obj).State = EntityState.Modified
             _context.Update(obj);
-            _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
 
             return obj;
         }
 
-        public virtual async void Remove(long id)
+        public virtual async Task Delete(long id)
         {
-            var obj = _context.Get(id);
+            var obj = await Get(id);
 
             if (obj != null)
             {
@@ -60,5 +61,6 @@ namespace Users.Infra.Repositories
                 await _context.SaveChangesAsync();
             }
         }
+
     }
 }
