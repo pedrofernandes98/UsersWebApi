@@ -4,6 +4,7 @@ namespace Users.Domain.Validators
 {
     public class UserValidator : AbstractValidator<User>
     {
+        private readonly int NAME_MAX_LENGTH = 150;
         private readonly int EMAIL_MIN_LENGTH = 10;
         private readonly int EMAIL_MAX_LENGTH = 180;
         private readonly int PASSWORD_MIN_LENGTH = 6;
@@ -28,7 +29,10 @@ namespace Users.Domain.Validators
                 .WithMessage($"O nome não pode ser vazio.")
 
                 .NotNull()
-                .WithMessage($"O nome não pode ser nulo.");
+                .WithMessage($"O nome não pode ser nulo.")
+
+                .MaximumLength(150)
+                .WithMessage($"O nome deve ter no máximo {NAME_MAX_LENGTH} catacteres.");
 
             //MinimunLenght(int: lenght)
             //MaximumLength(int: lenght)
