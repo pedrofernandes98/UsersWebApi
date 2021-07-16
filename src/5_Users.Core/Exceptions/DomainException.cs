@@ -7,7 +7,7 @@ namespace Users.Core.Exceptions
     {
         internal List<string> _errors { get; set; }
 
-        public List<string> Errors
+        public IReadOnlyCollection<string> Errors
         {
             get
             {
