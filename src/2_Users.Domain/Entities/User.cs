@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Users.Core.Exceptions;
 using Users.Domain.Validators;
 namespace Users.Domain.Entities
 {
@@ -50,7 +51,7 @@ namespace Users.Domain.Entities
                 foreach (var error in validation.Errors) //Para cada erro identificado na validação 
                     _errors.Add(error.ErrorMessage); //Adiciona na lista de erros
 
-                throw new Exception($"Foram encontrados valores inválidos para os campos informados.\n {_errors[0]}");
+                throw new DomainException($"Foram encontrados valores inválidos para os campos informados.", _errors);
             }
 
             return true;
