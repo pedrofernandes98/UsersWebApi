@@ -32,7 +32,7 @@ namespace Users.Domain.Validators
                 .WithMessage($"O nome não pode ser nulo.")
 
                 .MaximumLength(150)
-                .WithMessage($"O nome deve ter no máximo {NAME_MAX_LENGTH} catacteres.");
+                .WithMessage($"O nome deve ter no máximo {NAME_MAX_LENGTH} caracteres.");
 
             //MinimunLenght(int: lenght)
             //MaximumLength(int: lenght)
@@ -40,7 +40,7 @@ namespace Users.Domain.Validators
             // - Email
             RuleFor(x => x.Email)
                 .NotEmpty()
-                .WithMessage($"O nome não pode ser vazio.")
+                .WithMessage($"O e-mail não pode ser vazio.")
 
                 .NotNull()
                 .WithMessage($"O e-mail não pode ser nulo.")
@@ -49,7 +49,7 @@ namespace Users.Domain.Validators
                 .WithMessage($"O e-mail deve ter no mínimo {EMAIL_MIN_LENGTH} caracteres.")
 
                 .MaximumLength(EMAIL_MAX_LENGTH)
-                .WithMessage($"O e-mail deve ter no máximo {EMAIL_MAX_LENGTH} catacteres.")
+                .WithMessage($"O e-mail deve ter no máximo {EMAIL_MAX_LENGTH} caracteres.")
 
                 .Matches(EMAIL_VALIDATOR_REGEX)
                 .WithMessage($"E-mail inválido.");
