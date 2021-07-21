@@ -100,5 +100,55 @@ namespace Users.Api.Controllers
                 return StatusCode(500, Responses.ApplicationErrorMessage());
             }
         }
+
+        [HttpPut]
+        [Route("/api/v1/users")]
+        public async Task<IActionResult> Update([FromBody] UpdateUserViewModel updateUserViewModel)
+        {
+            try
+            {
+                var userUpdated = await _userService.Update(_mapper.Map<UserDTO>(updateUserViewModel));
+                return Ok(new ResultViewModel
+                {
+                    Message = "Usuário editado com sucesso!",
+                    IsSuccess = true,
+                    Data = userUpdated
+                });
+            }
+            catch (DomainException ex)
+            {
+                return BadRequest(Responses.DomainErrorMessage(ex.Message, ex.Errors));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return StatusCode(500, Responses.ApplicationErrorMessage());
+            }
+        }
+
+        [HttpDelete]
+        [Route("/api/v1/users/{id}")]
+        public async Task<IActionResult> Delete(long id)
+        {
+            try
+            {
+                await _userService.Delete(id);
+                return Ok(new ResultViewModel
+                {
+                    Message = "Usuário excluído com sucesso!",
+                    IsSuccess = true,
+                    Data = null
+                });
+            }
+            catch (DomainException ex)
+            {
+                return BadRequest(Responses.DomainErrorMessage(ex.Message, ex.Errors));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return StatusCode(500, Responses.ApplicationErrorMessage());
+            }
+        }
     }
 }

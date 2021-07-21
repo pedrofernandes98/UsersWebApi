@@ -44,6 +44,7 @@ namespace Users.Api
             {
                 c.CreateMap<User, UserDTO>().ReverseMap();
                 c.CreateMap<CreateUserViewModel, UserDTO>().ReverseMap();
+                c.CreateMap<UpdateUserViewModel, UserDTO>().ReverseMap();
             });
 
             services.AddSingleton(autoMapperConfig.CreateMapper());

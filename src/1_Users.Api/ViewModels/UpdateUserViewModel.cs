@@ -2,8 +2,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Users.Api.ViewModels
 {
-    public class CreateUserViewModel
+    public class UpdateUserViewModel
     {
+        [Required(ErrorMessage = "O Id não pode ser vazio.")]
+        [Range(1, long.MaxValue, ErrorMessage = "O Id não pode ser menor que 1")]
+        public int Id { get; set; }
+
         [Required(ErrorMessage = "O nome não pode ser vazio.")]
         [MaxLength(150, ErrorMessage = "O nome deve ter no máximo 150 caracteres.")]
         public string Name { get; set; }
