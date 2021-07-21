@@ -5,7 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="automapper" Version="10.1.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\2_Users.Domain\Users.Domain.csproj" />
+    <ProjectReference Include="..\3_Users.Services\Users.Services.csproj" />
+    <ProjectReference Include="..\4_Users.Infra\Users.Infra.csproj" />
+    <ProjectReference Include="..\5_Users.Core\Users.Core.csproj" />
   </ItemGroup>
 
 </Project>

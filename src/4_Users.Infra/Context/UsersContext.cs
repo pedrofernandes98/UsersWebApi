@@ -15,11 +15,6 @@ namespace Users.Infra.Context
 
         public virtual DbSet<User> Users { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(@"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=WEBAPIDB;Data Source=LAPTOP-FJ79JN80\SQLEXPRESS");
-        }
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new UserMap());
