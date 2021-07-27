@@ -39,7 +39,7 @@ namespace Users.Api.Utilities
         {
             return new ResultViewModel
             {
-                Message = "O Login e/ou senha incorreta.",
+                Message = "Login e/ou senha incorreta.",
                 IsSuccess = false,
                 Data = null
             };

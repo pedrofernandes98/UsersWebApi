@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Users.Api.Utilities;
 using Users.Api.ViewModels;
@@ -24,6 +25,7 @@ namespace Users.Api.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [Route("/api/v1/users")]
         public async Task<IActionResult> Get()
         {
@@ -48,6 +50,7 @@ namespace Users.Api.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [Route("/api/v1/users/{id}")]
         public async Task<IActionResult> Get(long id)
         {
@@ -76,6 +79,7 @@ namespace Users.Api.Controllers
 
 
         [HttpPost]
+        [Authorize]
         [Route("/api/v1/users")]
         public async Task<IActionResult> Create([FromBody] CreateUserViewModel userViewModel)
         {
@@ -102,6 +106,7 @@ namespace Users.Api.Controllers
         }
 
         [HttpPut]
+        [Authorize]
         [Route("/api/v1/users")]
         public async Task<IActionResult> Update([FromBody] UpdateUserViewModel updateUserViewModel)
         {
@@ -127,6 +132,7 @@ namespace Users.Api.Controllers
         }
 
         [HttpDelete]
+        [Authorize]
         [Route("/api/v1/users/{id}")]
         public async Task<IActionResult> Delete(long id)
         {
@@ -152,6 +158,7 @@ namespace Users.Api.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [Route("/api/v1/users/getbyname/{name}")]
         public async Task<IActionResult> GetByName(string name)
         {
@@ -178,6 +185,7 @@ namespace Users.Api.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [Route("/api/v1/searchbyname/")]
         public async Task<IActionResult> SearchByName([FromQuery] string name)
         {
@@ -204,6 +212,7 @@ namespace Users.Api.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [Route("/api/v1/users/getbyemail/")]
         public async Task<IActionResult> GetByEmail([FromQuery] string email)
         {
@@ -230,6 +239,7 @@ namespace Users.Api.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [Route("/api/v1/searchbyemail/")]
         public async Task<IActionResult> SearchByEmail([FromQuery] string email)
         {
